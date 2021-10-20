@@ -2,7 +2,6 @@ FROM node:14-alpine
 
 ARG WORKDIR
 ARG CONTAINER_PORT
-# 追加
 ARG API_URL
 
 ENV HOME=/${WORKDIR} \
@@ -18,14 +17,16 @@ RUN echo ${CONTAINER_PORT}
 
 WORKDIR ${HOME}
 
-# 追加
 COPY package*.json ./
-RUN yarn install
+
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache make gcc g++ python && \
+    yarn install
 
 COPY . ./
 
 RUN yarn run build
-# ここまで
 
 
 EXPOSE ${CONTAINER_PORT}
