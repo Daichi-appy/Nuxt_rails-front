@@ -2,35 +2,72 @@
   <v-app-bar
     app
     :dark="!isScrollPoint"
-    :height="appBarheight"
+    :height="appBarHeight"
     :color="toolbarStyle.color"
     :elevation="toolbarStyle.elevation"
   >
     <applogo
       @click.native="goTo('scroll-top')"
     />
-    <v-toolbar-title>
+    <v-toolbar-title
+      class="hidden-mobile-and-down"
+    >
       {{ appName }}
     </v-toolbar-title>
 
     <v-spacer />
 
-    <v-toolbar-items class="ml-2">
+    <v-toolbar-items class="ml-2 hidden-ipad-and-down">
       <v-btn
         v-for="(menu, i) in menus"
         :key="`menu-btn-${i}`"
         text
+        :class="{ 'hidden-sm-and-down' : (menu.title === 'about') }"
         @click="goTo(menu.title)"
       >
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
+    
+    <signupLink />
+    <loginLink />
+
+    <v-menu
+      bottom
+      nudge-left="110"
+      nudge-width="100"
+    >
+      <template v-slot:activator="{ on }">
+        <v-app-bar-nav-icon
+          class="hidden-ipad-and-up"
+          v-on="on"
+        />
+      </template>
+      <v-list
+        dense
+        class="hidden-ipad-and-up"
+      >
+        <v-list-item
+          v-for="(menu, i) in menus"
+          :key="`menu-list-${i}`"
+          exact
+          @click="goTo(menu.title)"
+        >
+          <v-list-item-title>
+            {{ $t(`menus.${menu.title}`) }}
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
 
   </v-app-bar>
 </template>
 
 <script>
 import applogo from '~/components/ui/appLogo'
+import loginLink from '~/components/beforeLogin/loginLink'
+import signupLink from '~/components/beforeLogin/signupLink'
+
 export default {
   props: {
     menus: {
@@ -43,7 +80,9 @@ export default {
     }
   },
   components: {
-    applogo
+    applogo,
+    loginLink,
+    signupLink
   },
   data ({ $config: { appName }, $store }) {
     return {
