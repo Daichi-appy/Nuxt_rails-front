@@ -1,9 +1,14 @@
 <template>
   <v-app-bar
     app
-    dark
+    :dark="!isScrollPoint"
+    :height="appBarheight"
+    :color="toolbarStyle.color"
+    :elevation="toolbarStyle.elevation"
   >
-    <applogo />
+    <applogo
+      @click.native="goTo('scroll-top')"
+    />
     <v-toolbar-title>
       {{ appName }}
     </v-toolbar-title>
@@ -15,10 +20,12 @@
         v-for="(menu, i) in menus"
         :key="`menu-btn-${i}`"
         text
+        @click="goTo(menu.title)"
       >
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
+
   </v-app-bar>
 </template>
 
@@ -29,14 +36,44 @@ export default {
     menus: {
       type: Array,
       default: () => []
+    },
+    imgHeight: {
+      type: Number,
+      default: 0
     }
   },
   components: {
     applogo
   },
-  data ({ $config: { appName } }) {
+  data ({ $config: { appName }, $store }) {
     return {
-      appName
+      appName,
+      scrollY: 0,
+      appBarHeight: $store.state.styles.beforeLogin.appBarHeight
+    }
+  },
+  computed: {
+    isScrollPoint () {
+      return this.scrollY > (this.imgHeight - this.appBarHeight)
+    },
+    toolbarStyle () {
+      const color = this.isScrollPoint ? 'white' : 'transparent'
+      const elevation = this.isScrollPoint ? 4 : 0
+      return { color, elevation }
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll () {
+      this.scrollY = window.scrollY
+    },
+    goTo (id) {
+      this.$vuetify.goTo(`#${id}`)
     }
   }
 }
