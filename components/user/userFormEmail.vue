@@ -1,5 +1,6 @@
 <template>
   <v-text-field
+    v-model="setEmail"
     label="メールアドレスを入力"
     placeholder="your@email.com"
     outlined
@@ -8,5 +9,17 @@
 
 <script>
 export default {
+  props: {
+    name: {
+      type: String,
+      default:''
+    }
+  },
+  computed: {
+    setEmail: {
+      get () { return this.email },
+      set (newVal) { return this.$emit('update:email', newVal) }
+    }
+  }
 }
 </script>
