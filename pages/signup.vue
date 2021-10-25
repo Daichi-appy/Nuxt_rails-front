@@ -2,6 +2,7 @@
   <befLoginFormCard>
     <template #form-card-content>
       <v-form
+        ref="form"
         v-model="isValid"
       >
         <userFormName
@@ -14,10 +15,12 @@
           :password.sync="params.user.password"
         />
         <v-btn
-          :disabled="!isValid"
+          :disabled="!isValid || loading"
+          :loading="loading"
           block
           color="myblue"
           class="white--text"
+          @click="signup"
         >
           登録する
         </v-btn>
@@ -34,6 +37,7 @@ import befLoginFormCard from '/components/beforeLogin/befLoginFormCard'
 import userFormName from '/components/user/userFormName'
 import userFormEmail from '/components/user/userFormEmail'
 import userFormPassword from '/components/user/userFormPassword'
+
 export default {
   layout: 'beforeLogin',
   components: {
@@ -45,7 +49,21 @@ export default {
   data () {
     return {
       isValid: false,
+      loading: false,
       params: { user: { name: '', email: '', password:''} }
+    }
+  },
+  methods: {
+    signup () {
+      this.loading = true
+      setTimeout(() => {
+        this.formReset()
+        this.loading = false
+      }, 1500)
+    },
+    formReset () {
+      this.$refs.form.reset()
+      this.params = { user: { name: '', email: '', password: '' } }
     }
   }
 }
