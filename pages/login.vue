@@ -5,33 +5,41 @@
         ref="form"
         v-model="isValid"
       >
-        <userFormName
-          :name.sync="params.user.name"
-        />
         <userFormEmail
-          :email.sync="params.user.email"
+          :email.sync="params.auth.email"
+          no-validation
         />
         <userFormPassword
-          :password.sync="params.user.password"
+          :password.sync="params.auth.password"
+          no-validation
         />
+      </v-form>
+      <v-card-actions>
+        <nuxt-link
+          to="#"
+          class="body-2 text-decoration-none"
+        >
+          パスワード忘れた？
+        </nuxt-link>
+      </v-card-actions>
+      <v-card-text class="px-0">
         <v-btn
           :disabled="!isValid || loading"
           :loading="loading"
           block
           color="myblue"
           class="white--text"
-          @click="signup"
+          @click="login"
         >
-          登録する
+          ログインする
         </v-btn>
-      </v-form>
+      </v-card-text>
     </template>
   </befLoginFormCard>
 </template>
 
 <script>
 import befLoginFormCard from '/components/beforeLogin/befLoginFormCard'
-import userFormName from '/components/user/userFormName'
 import userFormEmail from '/components/user/userFormEmail'
 import userFormPassword from '/components/user/userFormPassword'
 
@@ -39,7 +47,6 @@ export default {
   layout: 'beforeLogin',
   components: {
     befLoginFormCard,
-    userFormName,
     userFormEmail,
     userFormPassword
   },
@@ -47,20 +54,17 @@ export default {
     return {
       isValid: false,
       loading: false,
-      params: { user: { name: '', email: '', password:''} }
+      params: { auth: { email: '', password: ''} }
     }
   },
   methods: {
-    signup () {
+    login () {
       this.loading = true
-      setTimeout(() => {
-        this.formReset()
+        setTimeout(() => {
+        this.$store.dispatch('login')
+        this.$router.replace('/')
         this.loading = false
       }, 1500)
-    },
-    formReset () {
-      this.$refs.form.reset()
-      this.params = { user: { name: '', email: '', password: '' } }
     }
   }
 }
