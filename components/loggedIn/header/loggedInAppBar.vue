@@ -6,6 +6,9 @@
     clipped-left
     color="white"
   >
+
+    <slot name="nav-icon" />
+
     <nuxt-link
       to="/"
       class="text-decoration-none"
@@ -13,7 +16,14 @@
       <ui-appLogo />
     </nuxt-link>
 
-    <ui-appTitle />
+    <ui-appTitle 
+      class="hidden-mobile-and-down"
+    />
+
+    <loggedIn-ui-breadcrumbs 
+      v-if="notTopPage"
+    />
+
 
     <v-spacer />
 
@@ -86,6 +96,11 @@ export default {
           { name: 'account-password', icon: 'mdi-lock-outline' },
           { name: 'logout', icon: 'mdi-logout-variant', divider: true }
       ]
+    }
+  },
+  computed: {
+    notTopPage () {
+      return this.$route.name !== 'index'
     }
   }
 }
