@@ -45,6 +45,12 @@ export default {
     'nuxt-i18n'
   ],
 
+  axios: {
+    // クロスサイトリクエスト時にCookieを使用することを許可する
+    // Doc: https://axios.nuxtjs.org/options/#credentials
+    credentials: true
+  },  
+
   vuetify: {
   // 開発環境でcustomVariablesを有効にするフラグ
   // Doc: https://vuetifyjs.com/ja/customization/a-la-carte/
