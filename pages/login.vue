@@ -68,8 +68,9 @@ export default {
       this.loading = false
     },
     // ログイン成功
-    async authSuccessful (response) {
-      await this.$auth.login(response)
+    authSuccessful (response) {
+      this.$auth.login(response)
+      this.$router.push(this.$store.state.rememberRoute)
     },
     // ログイン失敗
     authFailure ({ response }) {

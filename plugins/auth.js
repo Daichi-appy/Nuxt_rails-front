@@ -8,6 +8,7 @@ class Authentication {
     this.store = ctx.store
     this.$axios = ctx.$axios
     this.$config = ctx.$config
+    this.error = ctx.error
   }
 
   // 有効期限を暗号化
@@ -70,15 +71,21 @@ class Authentication {
     this.store.dispatch('getCurrentUser', user)
   }
 
-  //
+  // ログアウト業務
   logout () {
     this.$axios.$delete('/api/v1/user_token')
     this.removeStorage()
     this.store.dispatch('getCurrentUser', null)
   }
+
+  // 認証エラー処理
+  unauthError () {
+    this.removeStorage()
+    throw this.unauthError({ statusCode: 401, message: 'Unauthorized' })
+  }
 }
 
-export default ({ store, $axios, $config }, inject) => {
-  inject('auth', new Authentication({ store, $axios, $config }))
+export default ({ store, $axios, $config, error }, inject) => {
+  inject('auth', new Authentication({ store, $axios, $config, error }))
 
 }

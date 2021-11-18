@@ -11,6 +11,7 @@
 <script>
 import befLoginAppBar from '/components/beforeLogin/befLoginAppBar'
 export default {
+  middleware: 'loggedInIsRedirects',
   components: {
     befLoginAppBar
   }

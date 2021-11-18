@@ -4,13 +4,14 @@
     <v-main>
       <nuxt />
     </v-main>
-  </v-app>  
+  </v-app>
 </template>
 
 <script>
 import loggedInAppBar from '/components/loggedIn/header/loggedInAppBar'
 
 export default {
+  middleware: 'authenticator',
   components: {
     loggedInAppBar
   }

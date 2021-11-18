@@ -7,6 +7,9 @@
 <script>
 export default {
   layout: 'loggedIn',
+  middleware ({ route, redirect }) {
+    if (route.name === 'account') { return redirect('/') }
+  },
   validate ({ route }) {
     return route.name !== 'account'
   }
