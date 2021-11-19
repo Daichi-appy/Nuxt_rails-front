@@ -3,7 +3,8 @@ export default async ({ $auth, store, route, redirect }) => {
   if (route.name === 'index' && !$auth.isUserPresent()) {
     return false
   }
-
+  // テスト
+  // store.dispatch('getCurrentUser', null)
 
   // トップページでユーザーが存在する場合はここを通過する
   if (!$auth.isAuthenticated()) {
