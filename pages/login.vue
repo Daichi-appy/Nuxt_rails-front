@@ -1,6 +1,8 @@
 <template>
   <befLoginFormCard>
     <template #form-card-content>
+      <!-- toaster -->
+      <toaster />
       <v-form
         ref="form"
         v-model="isValid"
@@ -42,13 +44,15 @@
 import befLoginFormCard from '/components/beforeLogin/befLoginFormCard'
 import userFormEmail from '/components/user/userFormEmail'
 import userFormPassword from '/components/user/userFormPassword'
+import toaster from '/components/ui/toaster'
 
 export default {
   layout: 'beforeLogin',
   components: {
     befLoginFormCard,
     userFormEmail,
-    userFormPassword
+    userFormPassword,
+    toaster
   },
   data () {
     return {
@@ -74,7 +78,9 @@ export default {
     },
     // ログイン失敗
     authFailure ({ response }) {
-      console.log(response)
+      if (response.status === 404) {
+        this.$store.dispatch('getToast', {msg: 'ユーザーが見つかりません😩' })
+      }
     }
   }
 }
