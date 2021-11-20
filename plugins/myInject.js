@@ -28,5 +28,5 @@ class MyInject {
 }
 
 export default ({ app, error }, inject) => {
-  inject('my', new MyInject( app, error ))
+  inject('my', new MyInject({ app, error }))
 }
