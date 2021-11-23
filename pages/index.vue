@@ -20,7 +20,7 @@
               :md="container.md"
             >
               <v-card-title class="white--text">
-                最近のプロジェクト
+                タスク一覧
               </v-card-title>
 
               <v-divider dark />
@@ -75,7 +75,7 @@
                       <v-icon size="14">
                         mdi-update
                       </v-icon>
-                      {{ $my.format(project.updatedAt) }}
+                      {{ $my.format(project.updated_at) }}
                     </v-card-text>
                   </v-card>
                 </v-col>
@@ -114,8 +114,8 @@
                 {{ item.name }}
               </nuxt-link>
             </template>
-            <template v-slot:item.updatedAt="{ item }">
-              {{ $my.format(item.updatedAt) }}
+            <template v-slot:item.updated_at="{ item }">
+              {{ $my.format(item.updated_at) }}
             </template>
           </v-data-table>
         </v-col>
@@ -154,7 +154,7 @@ export default {
         {
           text: '更新日',
           width: 150,
-          value: 'updatedAt'
+          value: 'updated_at'
         }
       ]
     }
@@ -163,8 +163,8 @@ export default {
     recentProjects () {
       const copyProjects = Array.from(this.$store.state.projects)
       return copyProjects.sort((a, b) => {
-        if (a.updatedAt > b.updatedAt) { return -1 }
-        if (a.updatedAt < b.updatedAt) { return 1 }
+        if (a.updated_at > b.updated_at) { return -1 }
+        if (a.updated_at < b.updated_at) { return 1 }
         return 0
       })
     }
