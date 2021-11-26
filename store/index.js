@@ -10,6 +10,7 @@ export const state = () => ({
     project: null
   },
   projects: [],
+  // { "id": 1, "user_id": 1, "name": "基本情報試験!", "period": "2021-11-20T12:00:00.000+09:00",  "created_at": "2021-11-23T19:47:03.756+09:00", "updated_at": "2021-11-23T19:47:03.756+09:00" }
   rememberRoute: {
     name: 'index',
     params: {}

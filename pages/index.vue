@@ -34,24 +34,9 @@
                   :sm="card.sm"
                   :md="card.md"
                 >
-                  <v-btn
-                    block
-                    :height="card.height"
-                    :elevation="card.elevation"
-                  >
-                    <div>
-                      <v-icon
-                        size="24"
-                        color="myblue"
-                        class="my-2"
-                      >
-                        mdi-plus
-                      </v-icon>
-                      <div class="caption myblue--text">
-                        プロジェクトを追加
-                      </div>
-                    </div>
-                  </v-btn>
+                  <modal
+
+                  />
                 </v-col>
 
                 <v-col
