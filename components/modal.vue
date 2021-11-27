@@ -27,10 +27,61 @@
       </template>
 
       <v-card>
-        <v-text-field
-          label="Project Name"
-        >
-        </v-text-field>
+
+        <v-card-title>
+          <span class="text-h5">
+            Projectを新規作成
+          </span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-text-field
+                  label="Project Name"
+                  v-model="name"
+                >
+                </v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col align="center">
+                <v-chip color="success" outlined>
+                  目標 {{ picker }}
+                </v-chip>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col align="center">
+                <v-date-picker 
+                  v-model="picker" 
+                  elevation="15"
+                  color="light-blue lighten-2"
+                  ></v-date-picker>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="blue darken-1"
+            outlined
+            @click="dialog = false"
+          >
+            閉じる
+          </v-btn>
+          <v-btn
+            color="blue darken-1"
+            outlined
+            @click="dialog = false, addProject()"
+          >
+            追加
+          </v-btn>
+        </v-card-actions>
+
       </v-card>
 
 
@@ -42,8 +93,32 @@
 export default {
   data () {
     return {
-      dialog: false
+      dialog: false,
+      user_id: this.$store.state.current.user.id,
+      name: "",
+      picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      // project: {
+      //   user_id: this.user_id,
+      //   name: this.name,
+      //   picker: this.picker,
+      //   updated_at: "2021-11-26T12:00:00.000+09:00"
+      //   // period: "" 
+      // }
     }
+  },
+  methods: {
+    addProject () {
+      let project = { id: 2, user_id: this.user_id, name: this.name, updated_at: "2021-11-20T12:00:00.000+09:00" }
+      console.log(project) 
+      // this.$store.commit('setProjects', project)
+      this.name = ""
+      this.picker = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
+      // this.period = ""
+      this.$emit('add-project')
+    }
+  },
+  computed: {
+
   }
 }
 </script>

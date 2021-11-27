@@ -42,6 +42,9 @@ export const mutations = {
   },
   setProjects (state, payload) {
     state.projects = payload
+  },
+  addProjects (state, payload) {
+    state.projects.push(payload)
   }
 }
 
@@ -74,5 +77,9 @@ export const actions = {
   // ユーザーのプロジェクト一覧をセットする
   getProjects ({ commit }, projects) {
     commit('setProjects', projects)
+  },
+  // テスト
+  getMessage ({ commit }, message) {
+    commit('setMessage', message)
   }
 }

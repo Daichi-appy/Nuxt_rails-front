@@ -35,7 +35,7 @@
                   :md="card.md"
                 >
                   <modal
-
+                    @add-project="addProject()"
                   />
                 </v-col>
 
@@ -112,8 +112,10 @@
 
 <script>
 import homeImg from '~/assets/images/loggedIn/home.png'
+import modal from '../components/modal.vue'
 
 export default {
+  components: { modal },
   middleware: ['authenticator', 'getProjects'],
   layout ({ $auth }) {
     return $auth.loggedIn ? 'loggedIn' : 'welcome'
@@ -141,7 +143,8 @@ export default {
           width: 150,
           value: 'updated_at'
         }
-      ]
+      ],
+      flag: false
     }
   },
   computed: {
@@ -152,6 +155,11 @@ export default {
         if (a.updated_at < b.updated_at) { return 1 }
         return 0
       })
+    }
+  },
+  methods: {
+    addProject () {
+      console.log("success")
     }
   }
 }
