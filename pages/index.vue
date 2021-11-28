@@ -83,6 +83,8 @@
             全てのプロジェクト
           </v-card-title>
 
+          <v-btn @click="test"></v-btn>
+
           <v-divider  class="mb-4" />
           
           <v-data-table
@@ -143,8 +145,7 @@ export default {
           width: 150,
           value: 'updated_at'
         }
-      ],
-      flag: false
+      ]
     }
   },
   computed: {
@@ -159,7 +160,21 @@ export default {
   },
   methods: {
     addProject () {
-      console.log("success")
+      this.$axios.$get('/api/v1/projects')
+        .then(response => this.$store.dispatch('getProjects', response))
+        .then(console.log("success"))
+    },
+    // sortProjects () {
+    //   const copyProjects = Array.from(this.$store.state.projects)
+    //   copyProjects.sort((a, b) => {
+    //     if (a.updated_at > b.updated_at) { return -1 }
+    //     if (a.updated_at < b.updated_at) { return 1 }
+    //     return 0
+    //   })
+    //   this.projects = copyProjects
+    // },
+    test () {
+      console.log(this.recentProjects)
     }
   }
 }

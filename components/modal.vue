@@ -108,17 +108,22 @@ export default {
   },
   methods: {
     addProject () {
-      let project = { id: 2, user_id: this.user_id, name: this.name, updated_at: "2021-11-20T12:00:00.000+09:00" }
+      let project = { name: this.name }
       console.log(project) 
       // this.$store.commit('setProjects', project)
-      this.name = ""
-      this.picker = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
+      // this.name = ""
+      // this.picker = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
       // this.period = ""
-      this.$emit('add-project')
+      this.$axios
+        .$post('/api/v1/projects', project)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .then(this.$emit('add-project'))
     }
-  },
-  computed: {
-
   }
 }
 </script>
