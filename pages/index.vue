@@ -20,7 +20,7 @@
               :md="container.md"
             >
               <v-card-title class="white--text">
-                タスク一覧
+                テーマ一覧
               </v-card-title>
 
               <v-divider dark />
@@ -80,7 +80,7 @@
           :md="container.md"
         >
           <v-card-title>
-            全てのプロジェクト
+            全てのテーマ
           </v-card-title>
 
           <v-btn @click="test"></v-btn>
@@ -164,17 +164,10 @@ export default {
         .then(response => this.$store.dispatch('getProjects', response))
         .then(console.log("success"))
     },
-    // sortProjects () {
-    //   const copyProjects = Array.from(this.$store.state.projects)
-    //   copyProjects.sort((a, b) => {
-    //     if (a.updated_at > b.updated_at) { return -1 }
-    //     if (a.updated_at < b.updated_at) { return 1 }
-    //     return 0
-    //   })
-    //   this.projects = copyProjects
-    // },
     test () {
-      console.log(this.recentProjects)
+      setTimeout(() => {
+        console.log('Success')
+      }, 5000);
     }
   }
 }

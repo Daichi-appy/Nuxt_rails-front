@@ -26,7 +26,9 @@
         </v-btn>
       </template>
 
-      <v-card>
+      <v-card
+        :loading = loading
+      >
 
         <v-card-title>
           <span class="text-h5">
@@ -76,7 +78,8 @@
           <v-btn
             color="blue darken-1"
             outlined
-            @click="dialog = false, addProject()"
+            @click="addProject()"
+            :loading = loading
           >
             追加
           </v-btn>
@@ -97,6 +100,7 @@ export default {
       user_id: this.$store.state.current.user.id,
       name: "",
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      loading: false,
       // project: {
       //   user_id: this.user_id,
       //   name: this.name,
@@ -107,14 +111,15 @@ export default {
     }
   },
   methods: {
-    addProject () {
+    async addProject () {
       let project = { name: this.name }
-      console.log(project) 
+      console.log(project)
+      this.loading = true
       // this.$store.commit('setProjects', project)
       // this.name = ""
       // this.picker = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
       // this.period = ""
-      this.$axios
+      await this.$axios
         .$post('/api/v1/projects', project)
         .then((res) => {
           console.log(res)
@@ -122,8 +127,14 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-        .then(this.$emit('add-project'))
+      await this.resolveAfter(2)
+      this.$emit('add-project')
+      this.dialog = false
+    },
+    resolveAfter (sec) {
+      return new Promise(resolve => setTimeout(resolve, sec*1000))
     }
+
   }
 }
 </script>
