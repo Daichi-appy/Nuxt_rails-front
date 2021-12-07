@@ -17,6 +17,7 @@
     "nuxt-i18n": "^6.28.1"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.12.1"
+    "@nuxtjs/vuetify": "^1.12.1",
+    "node-sass": "4.14"
   }
 }
