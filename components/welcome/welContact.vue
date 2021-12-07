@@ -4,6 +4,36 @@
   >
     <v-col
       cols="12"
+      sm="6"
+      align="center"
+    >
+      <v-card-title class="justify-center">
+        <v-btn
+          icon
+          :href="gitHubUrl"
+          class="mr-3"
+        >
+          <v-icon size="40px" color="black">
+            mdi-github
+          </v-icon>
+        </v-btn>
+        Github
+      </v-card-title>
+      <v-card-text>
+        <a
+          :href="gitHubUrl"
+          rel="nofollow"
+          target="_blank"
+          class="text-decoration-none"
+        >
+          {{ gitHubUrl }}
+        </a>
+      </v-card-text>
+    </v-col>
+
+
+    <v-col
+      cols="12"
       sm="10"
       md="8"
     >
@@ -111,7 +141,8 @@ export default {
         v => !!v || 'お問合せ内容を入力してください'
       ],
       loading: false,
-      sentIt: false
+      sentIt: false,
+      gitHubUrl: "https://github.com/Daichi-appy",
     }
   },
   methods: {

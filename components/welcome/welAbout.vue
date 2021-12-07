@@ -18,16 +18,6 @@
       利用を始める
     </v-btn>
 
-    <v-card-text class="text-center">
-      <a
-        :href="gitHubUrl"
-        rel="nofollow"
-        target="_blank"
-        class="text-decoration-none"
-      >
-        {{ gitHubUrl }}
-      </a>
-    </v-card-text>
 
     <v-row>
 
