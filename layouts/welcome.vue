@@ -21,13 +21,13 @@
           class="text-center"
         >
           <h1 class="display-1 mb-4">
-            未来を作ろう。ワクワクしよう。
+            未来をよりよく
           </h1>
           <h4
             class="subheading"
             :style="{ letterSpacing: '5px' }"
           >
-            中小企業に特化した事業計画策定ツール
+            やりたいこと、達成したいこと、漠然とした目標、ちょっとしたことでも書き出してみよう。
           </h4>
         </v-col>
       </v-row>
@@ -37,6 +37,7 @@
       <v-container
         fluid
         :style="{ maxWidth: '1280px' }"
+        class="mt-5"
       >
         <v-row
           v-for="(menu, i) in menus"
@@ -48,7 +49,7 @@
           >
             <v-card flat>
               <v-card-title class="justify-center display-1">
-                {{ $t(`menus.${menu.title}`) }}
+                {{ menu.title }}
               </v-card-title>
               <v-card-text class="text-center">
                 {{ menu.subtitle }}
@@ -69,9 +70,9 @@
 import welAppBar from '~/components/welcome/welAppBar'
 import welAbout from '~/components/welcome/welAbout'
 import welProducts from '~/components/welcome/welProducts'
-import welPrice from '~/components/welcome/welPrice'
+// import welPrice from '~/components/welcome/welPrice'
 import welContact from '~/components/welcome/welContact'
-import welCompany from '~/components/welcome/welCompany'
+// import welCompany from '~/components/welcome/welCompany'
 import befLoginFooter from '~/components/beforeLogin/befLoginFooter'
 
 export default {
@@ -79,20 +80,20 @@ export default {
     welAppBar,
     welAbout,
     welProducts,
-    welPrice,
+    // welPrice,
     welContact,
-    welCompany,
+    // welCompany,
     befLoginFooter
   },
   data () {
     return {
       imgHeight: 500,
       menus: [
-        { title: 'about', subtitle: 'このサイトはブログ"独学プログラマ"で公開されているチュートリアルのデモアプリケーションです' },
-        { title: 'products', subtitle: '他にはない優れた機能の数々' },
-        { title: 'price', subtitle: '会社の成長に合わせた3つのプラン' },
+        { title: 'about', subtitle: 'About' },
+        // { title: 'products', subtitle: '' },
+        // { title: 'price', subtitle: '会社の成長に合わせた3つのプラン' },
         { title: 'contact', subtitle: 'お気軽にご連絡を' },
-        { title: 'company', subtitle: '私たちの会社' }
+        // { title: 'company', subtitle: '私たちの会社' }
       ]
     }
   }
