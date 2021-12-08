@@ -21,13 +21,14 @@
           </v-col>
         </v-row>
 
+        <v-row>
+          <v-col>
+            <add-task />
+          </v-col>
+        </v-row>
+
         <!-- タスク一覧 -->
         <v-row class="mt-3">
-          <v-col
-            cols="3"
-          >
-            <modal />
-          </v-col>
           <v-col
             cols="3"
             v-for="(task, i) in recentTasks"
