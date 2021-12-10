@@ -6,7 +6,7 @@ export const state = () => ({
     }
   },
   current: {
-    user: null,
+    user: null, 
     project: null
   },
   projects: [],

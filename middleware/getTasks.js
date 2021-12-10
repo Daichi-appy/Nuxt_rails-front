@@ -6,5 +6,5 @@ export default async ({ store, $axios }) => {
         } 
       }
     ).then(response => store.dispatch('getTasks', response))
-    console.log(id)
+    // console.log(id)
   }

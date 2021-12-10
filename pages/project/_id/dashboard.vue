@@ -70,7 +70,7 @@ export default {
     recentTasks () {
       const copyTasks = Array.from(this.$store.state.tasks)
       return copyTasks.sort((a, b) => {
-        if (a.updated_at > b.updated_at) { return 1 } 
+        if (a.updated_at > b.updated_at) { return 1 }
         if (a.updated_at < b.updated_at) { return -1 }
         return 0
       })

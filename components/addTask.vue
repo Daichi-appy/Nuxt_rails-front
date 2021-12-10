@@ -94,8 +94,34 @@ export default {
     }
   },
   methods: {
-    addTask () {
+    async addTask () {
       //
+      const id = this.$store.state.current.project.id
+      const task = { title: this.name, project_id: id } 
+      this.loading = true
+      // console.log(task)
+      await this.$axios
+        .$post('/api/v1/tasks', task)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      // Apiに追加したデータをApiからget
+      await this.resolveAfter(2)
+      await this.getTasks(id)
+      // Modalリセット
+      this.dialog = false
+      this.loading = false
+      this.name = ''
+    },
+    resolveAfter (sec) {
+      return new Promise(resolve => setTimeout(resolve, sec*1000))
+    },
+    getTasks (id) {
+        this.$axios.$get('/api/v1/tasks', { params:{ project_id: id } } )
+        .then(response => this.$store.dispatch('getTasks', response))
     }
   }
 }
