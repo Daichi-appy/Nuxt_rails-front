@@ -14,7 +14,7 @@
         <v-icon>
           mdi-plus
         </v-icon>
-      </v-btn>  
+      </v-btn>
     </template>
 
     <v-card

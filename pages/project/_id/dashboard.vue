@@ -37,7 +37,7 @@
             <v-card
             >
               <v-card-title>
-                {{ task.content }}
+                {{ task.title }}
               </v-card-title>
               <v-card-text>
                 {{ $my.format(task.updated_at) }}
@@ -58,6 +58,7 @@
 
 <script>
 export default {
+  middleware: ['getTasks'],
   data () {
     return {
       loading: false,
