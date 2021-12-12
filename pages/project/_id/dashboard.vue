@@ -43,9 +43,10 @@
                 {{ $my.format(task.updated_at) }}
               </v-card-text>
               <v-card-actions>
-                <v-btn>
+                <v-btn @click="test">
                   編集
                 </v-btn>
+                <delete-task-modal :task_id="task.id" />
               </v-card-actions>
             </v-card>
           </v-col>
@@ -57,12 +58,13 @@
 </template>
 
 <script>
+import deleteTaskModal from '../../../components/deleteTaskModal.vue'
 export default {
+  components: { deleteTaskModal },
   middleware: ['getTasks'],
   data () {
     return {
       loading: false,
-      tasks: [],
       dialog: false
     }
   },
@@ -77,7 +79,9 @@ export default {
     }
   },
   methods: {
-
+    test () {
+      console.log()
+    }
   }
 }
 </script>
