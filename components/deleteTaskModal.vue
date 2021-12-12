@@ -71,7 +71,7 @@ export default {
       // 少し待つ
       await this.resolveAfter(2)
       // Apiからvuexにデータ更新
-      await this.replaceTasks()
+      this.replaceTasks()
       // ローディング終了,Modal閉じる
       this.loading = false
       this.dialog = false

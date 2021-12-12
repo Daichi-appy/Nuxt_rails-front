@@ -36,6 +36,17 @@
           ログインする
         </v-btn>
       </v-card-text>
+      <v-card-text class="px-0">
+        <v-btn
+          :loading="guestLoading"
+          block
+          color="myblue"
+          class="white--text"
+          @click="guestLogin"
+        >
+          ゲストログイン
+        </v-btn>
+      </v-card-text>
     </template>
   </befLoginFormCard>
 </template>
@@ -58,7 +69,9 @@ export default {
     return {
       isValid: false,
       loading: false,
-      params: { auth: { email: '', password: ''} }
+      guestLoading: false,
+      params: { auth: { email: '', password: ''} },
+      guestParams: { auth: { email: 'user0@example.com', password: 'password' } }
     }
   },
   methods: {
@@ -70,6 +83,14 @@ export default {
           .catch(error => this.authFailure(error))
       }
       this.loading = false
+    },
+    //ゲストログイン
+    async guestLogin () {
+      this.guestLoading = true
+      await this.$axios.$post('/api/v1/user_token', this.guestParams)
+        .then(response => this.authSuccessful(response))
+        .catch(error => this.authFailure(error))
+      this.guestLoading = false
     },
     // ログイン成功
     authSuccessful (response) {
