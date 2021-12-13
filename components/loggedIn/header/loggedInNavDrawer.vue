@@ -3,7 +3,7 @@
     v-model="setDrawer"
     app
     clipped
-    mobile-breakpoin="960"
+    mobile-breakpoint="960"
   >
     <v-list>
 
@@ -26,7 +26,6 @@
       <v-divider />
 
       <v-list-item
-        herf="https://blog.cloud-acct.com/categories/udemy"
         target="_blank"
       >
         <v-list-item-icon>
@@ -37,7 +36,7 @@
 
         <v-list-item-content>
           <v-list-item-title>
-            このアプリの作り方
+            外部リンク
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>

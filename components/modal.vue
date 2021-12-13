@@ -20,7 +20,7 @@
               mdi-plus
             </v-icon>
             <div class="caption myblue--text">
-              プロジェクトを追加
+              テーマを追加
             </div>
           </div>
         </v-btn>
@@ -32,7 +32,7 @@
 
         <v-card-title>
           <span class="text-h5">
-            Projectを新規作成
+            テーマを新規作成
           </span>
         </v-card-title>
 
@@ -41,7 +41,7 @@
             <v-row>
               <v-col>
                 <v-text-field
-                  label="Project Name"
+                  label="テーマ"
                   v-model="name"
                 >
                 </v-text-field>

@@ -2,7 +2,7 @@
   <logged-in-container>
     <template #my-content>
       <v-container>
-        {{ $store.state.current.project }}
+        <!-- {{ $store.state.current.project }} -->
         <!-- 削除ボタン -->
         <v-row 
           class="mt-3"
