@@ -112,7 +112,7 @@ export default {
   },
   methods: {
     async addProject () {
-      let project = { name: this.name }
+      const project = { name: this.name }
       console.log(project)
       this.loading = true
       // this.$store.commit('setProjects', project)

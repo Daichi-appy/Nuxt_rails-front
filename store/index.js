@@ -6,17 +6,16 @@ export const state = () => ({
     }
   },
   current: {
-    user: null,
+    user: null, 
     project: null
   },
   projects: [],
   // { "id": 1, "user_id": 1, "name": "基本情報試験!", "period": "2021-11-20T12:00:00.000+09:00",  "created_at": "2021-11-23T19:47:03.756+09:00", "updated_at": "2021-11-23T19:47:03.756+09:00" }
-  tasks: [
-          { "id": 1, "project_id": 1, "content": "こんにちは", "updated_at": '2021-11-23T19:47:03.756+09:00' },
-          { "id": 2, "project_id": 1, "content": "Hello", "updated_at": '2021-11-23T19:47:03.756+09:00' },
-          { "id": 3, "project_id": 1, "content": "ボンジュール", "updated_at": '2021-11-27T19:17:51.271+09:00' },
-          { "id": 4, "project_id": 1, "content": "Chao", "updated_at": '2021-11-27T19:20:53.458+09:00' },
-         ],
+  tasks: [],
+          // { "id": 1, "project_id": 1, "content": "こんにちは", "updated_at": '2021-11-23T19:47:03.756+09:00' },
+          // { "id": 2, "project_id": 1, "content": "Hello", "updated_at": '2021-11-23T19:47:03.756+09:00' },
+          // { "id": 3, "project_id": 1, "content": "ボンジュール", "updated_at": '2021-11-27T19:17:51.271+09:00' },
+          // { "id": 4, "project_id": 1, "content": "Chao", "updated_at": '2021-11-27T19:20:53.458+09:00' }
   rememberRoute: {
     name: 'index',
     params: {}
@@ -51,6 +50,9 @@ export const mutations = {
   },
   addProjects (state, payload) {
     state.projects.push(payload)
+  },
+  setTasks (state, payload) {
+    state.tasks = payload
   }
 }
 
@@ -83,6 +85,10 @@ export const actions = {
   // ユーザーのプロジェクト一覧をセットする
   getProjects ({ commit }, projects) {
     commit('setProjects', projects)
+  },
+  // 
+  getTasks ({ commit }, tasks) {
+    commit('setTasks', tasks)
   },
   // テスト
   getMessage ({ commit }, message) {
