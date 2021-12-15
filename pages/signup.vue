@@ -53,15 +53,46 @@ export default {
   methods: {
     signup () {
       this.loading = true
-      setTimeout(() => {
-        this.formReset()
-        this.loading = false
-      }, 1500)
+      this.postUser()
+      // setTimeout(() => {
+      //   this.formReset()
+      //   this.loading = false
+      // }, 1500)
+      // console.log(this.params)
     },
     formReset () {
       this.$refs.form.reset()
       this.params = { user: { name: '', email: '', password: '' } }
+    },
+    async postUser () {
+      const url = ('/api/v1/users')
+      await this.$axios.post(url, this.params)
+              .then((res) => {
+                if (res.status === 200)
+                  this.login()
+              })
+              .catch((err) => {
+                console.log(err)
+              })
+    },
+    async login () {
+      const auth = { auth: { email: this.params.user.email , password: this.params.user.password } }
+      await this.$axios.$post('/api/v1/user_token', auth)
+          .then(response => this.authSuccessful(response))
+          .catch(error => this.authFailure(error))
+    },
+    // ログイン成功
+    authSuccessful (response) {
+      this.$auth.login(response)
+      this.$router.push(this.$store.state.rememberRoute)
+    },
+    // ログイン失敗
+    authFailure ({ response }) {
+      return (response.status === 404)
+        ? this.$store.dispatch('getToast', {msg: 'ログインに失敗しました😩' })
+        : this.$my.errorHandler(response)
     }
+
   }
 }
 </script>
