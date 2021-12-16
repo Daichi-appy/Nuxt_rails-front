@@ -19,6 +19,7 @@
               :sm="container.sm"
               :md="container.md"
             >
+              <toaster />
               <v-card-title class="white--text">
                 テーマ一覧
               </v-card-title>
@@ -115,9 +116,10 @@
 <script>
 import homeImg from '~/assets/images/loggedIn/home.png'
 import modal from '../components/modal.vue'
+import toaster from '../components/ui/toaster'
 
 export default {
-  components: { modal },
+  components: { modal, toaster },
   middleware: ['authenticator', 'getProjects'],
   layout ({ $auth }) {
     return $auth.loggedIn ? 'loggedIn' : 'welcome'
@@ -156,6 +158,17 @@ export default {
         if (a.updated_at < b.updated_at) { return 1 }
         return 0
       })
+    },
+    toast () {
+      return this.$store.state.current
+    },
+    loginFlag: {
+      get () {
+        if (!!toast.user) {
+          // this.$store.dispatch('getToast', {msg: 'ログインしました', color: 'success' })
+          console.log('OK')
+        }
+      }
     }
   },
   methods: {

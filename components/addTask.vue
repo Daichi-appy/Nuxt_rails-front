@@ -115,6 +115,7 @@ export default {
       this.dialog = false
       this.loading = false
       this.name = ''
+      this.$emit('add-toaster')
     },
     resolveAfter (sec) {
       return new Promise(resolve => setTimeout(resolve, sec*1000))

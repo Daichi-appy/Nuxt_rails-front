@@ -26,5 +26,8 @@ export default async ({ $auth, store, route, redirect }) => {
   } else if (!$auth.isUserPresent()) {
     // 有効期限内でユーザーが存在しない場合
     return $auth.unauthError()
-  }
+  } // ログインしたとき成功トースター
+  //   else {
+  //     store.dispatch('getToast', { msg: 'ログインしました', color: 'success'} )
+  // }
 }

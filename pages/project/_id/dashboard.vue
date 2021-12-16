@@ -8,6 +8,7 @@
           class="mt-3"
         >
           <v-col>
+            <toaster />
             <h1>
               テーマ : {{ $store.state.current.project.name }}
             </h1>
@@ -23,7 +24,7 @@
 
         <v-row>
           <v-col>
-            <add-task />
+            <add-task @add-toaster="addToaster()" />
           </v-col>
         </v-row>
 
@@ -46,7 +47,7 @@
                 <v-btn @click="test">
                   編集
                 </v-btn>
-                <delete-task-modal :task_id="task.id" />
+                <delete-task-modal :task_id="task.id" @delete-toaster="deleteToaster()" />
               </v-card-actions>
             </v-card>
           </v-col>
@@ -59,8 +60,9 @@
 
 <script>
 import deleteTaskModal from '../../../components/deleteTaskModal.vue'
+import toaster from '../../../components/ui/toaster'
 export default {
-  components: { deleteTaskModal },
+  components: { deleteTaskModal, toaster },
   middleware: ['getTasks'],
   data () {
     return {
@@ -79,6 +81,12 @@ export default {
     }
   },
   methods: {
+    addToaster () {
+      this.$store.dispatch('getToast', {msg: 'タスクを追加しました', color: 'success' })
+    },
+    deleteToaster () {
+      this.$store.dispatch('getToast', {msg: 'タスクを削除しました', color: 'error' })
+    },
     test () {
       console.log()
     }

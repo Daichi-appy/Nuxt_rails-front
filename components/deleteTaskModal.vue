@@ -75,6 +75,7 @@ export default {
       // ローディング終了,Modal閉じる
       this.loading = false
       this.dialog = false
+      this.$emit('delete-toaster')
     },
     resolveAfter (sec) {
       return new Promise(resolve => setTimeout(resolve, sec*1000))
