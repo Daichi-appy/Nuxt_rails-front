@@ -9,17 +9,29 @@
         >
           <v-col>
             <toaster />
-            <h1>
+            <!-- <h1>
               テーマ : {{ $store.state.current.project.name }}
-            </h1>
+            </h1> -->
+            <v-card>
+              <v-card-text>
+                <div>テーマ</div>
+                <div>
+                  <p class="text-h4 text--primary">
+                    {{ $store.state.current.project.name }}
+                    <!-- <v-btn absolute right></v-btn> -->
+                    <delete-modal />
+                  </p>
+                </div>
+              </v-card-text>
+            </v-card>
           </v-col>
 
-          <v-col
+          <!-- <v-col
             align="center"
           >
             <delete-modal />
 
-          </v-col>
+          </v-col> -->
         </v-row>
 
         <v-row>

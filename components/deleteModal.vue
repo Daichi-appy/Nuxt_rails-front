@@ -6,6 +6,7 @@
           color="red"
           v-on="on"
           v-bind="attrs"
+          absolute right
         >
           削除する
         </v-btn>
