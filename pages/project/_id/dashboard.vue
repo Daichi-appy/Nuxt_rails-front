@@ -52,11 +52,19 @@
               <v-card-title>
                 {{ task.title }}
               </v-card-title>
+              <v-card-title>
+                <v-text-field
+                >
+                  {{ task.title }}
+                </v-text-field>
+              </v-card-title>
+
+
               <v-card-text>
                 {{ $my.format(task.updated_at) }}
               </v-card-text>
               <v-card-actions>
-                <v-btn @click="test">
+                <v-btn color="primary" outlined @click="test">
                   編集
                 </v-btn>
                 <delete-task-modal :task_id="task.id" @delete-toaster="deleteToaster()" />
@@ -100,7 +108,7 @@ export default {
       this.$store.dispatch('getToast', {msg: 'タスクを削除しました', color: 'error' })
     },
     test () {
-      console.log()
+      console.log('update')
     }
   }
 }
