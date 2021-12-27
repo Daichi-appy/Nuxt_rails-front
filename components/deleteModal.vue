@@ -2,13 +2,15 @@
   <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn 
-          outlined
           color="red"
+          icon
           v-on="on"
           v-bind="attrs"
           absolute right
         >
-          削除する
+          <v-icon>
+            mdi-delete
+          </v-icon>
         </v-btn>
       </template>
 
