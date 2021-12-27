@@ -91,7 +91,7 @@
           @click:event="showEvent"
           @click:more="viewDay"
           @click:date="viewDay"
-          @change="updateRange"
+          locale="ja-jp"
         ></v-calendar>
         <v-menu
           v-model="selectedOpen"

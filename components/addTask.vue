@@ -6,8 +6,12 @@
   >
     <template v-slot:activator="{ on , attrs }">
       <v-btn 
-        color="myblue"
-        outlined
+        color="primary"
+        fab
+        fixed
+        bottom
+        right
+        x-large
         v-on="on"
         v-bind="attrs"
       >

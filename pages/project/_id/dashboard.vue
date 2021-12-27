@@ -34,11 +34,7 @@
           </v-col> -->
         </v-row>
 
-        <v-row>
-          <v-col>
-            <add-task @add-toaster="addToaster()" />
-          </v-col>
-        </v-row>
+        <v-divider class="my-10"></v-divider>
 
         <!-- タスク一覧 -->
         <v-row class="mt-3">
@@ -52,13 +48,6 @@
               <v-card-title>
                 {{ task.title }}
               </v-card-title>
-              <v-card-title>
-                <v-text-field
-                >
-                  {{ task.title }}
-                </v-text-field>
-              </v-card-title>
-
 
               <v-card-text>
                 {{ $my.format(task.updated_at) }}
@@ -72,6 +61,10 @@
             </v-card>
           </v-col>
         </v-row>
+
+        <!-- ボタン右下 -->
+          <add-task @add-toaster="addToaster()" />
+
       </v-container>
 
     </template>
