@@ -1,5 +1,5 @@
 <template>
-  <v-row class="my-auto">
+  <v-row class="mt-10">
     <v-col cols="8" class="mx-auto">
 
       <v-sheet height="64">
@@ -40,12 +40,12 @@
             {{ $refs.calendar.title }}
           </v-toolbar-title>
 
-          <v-btn @click="test()">
+          <v-btn @click="test">
             test
           </v-btn>
 
           <v-spacer></v-spacer>
-          <v-menu
+          <!-- <v-menu
             bottom
             right
           >
@@ -76,7 +76,7 @@
                 <v-list-item-title>4 days</v-list-item-title>
               </v-list-item>
             </v-list>
-          </v-menu>
+          </v-menu> -->
         </v-toolbar>
       </v-sheet>
 
@@ -85,12 +85,10 @@
           ref="calendar"
           v-model="focus"
           color="primary"
-          :events="events"
+          :events="getEvents"
           :event-color="getEventColor"
           :type="type"
           @click:event="showEvent"
-          @click:more="viewDay"
-          @click:date="viewDay"
           locale="ja-jp"
         ></v-calendar>
         <v-menu
@@ -141,6 +139,7 @@
 
 <script>
   export default {
+    middleware: ['getTasks'],
     data: () => ({
       focus: '',
       type: 'month',
@@ -154,17 +153,30 @@
       selectedElement: null,
       selectedOpen: false,
       events: [],
-      colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-      names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
+      colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1']
     }),
+    computed: {
+      getEvents() {
+        const tasks = Array.from(this.$store.state.tasks)
+        const renameTasks = []
+        for (let i = 0; i < tasks.length; i++) {
+          renameTasks.push({
+            name: tasks[i].title,
+            start: tasks[i].updated_at.substr(0, 10),
+            color: this.colors[this.rnd(0, this.colors.length - 1)]
+          })
+        }
+        return renameTasks
+      }
+    },
     mounted () {
       this.$refs.calendar.checkChange()
     },
     methods: {
-      viewDay ({ date }) {
-        this.focus = date
-        this.type = 'day'
-      },
+      // viewDay ({ date }) {
+      //   this.focus = date
+      //   this.type = 'day'
+      // },
       getEventColor (event) {
         return event.color
       },
@@ -223,7 +235,7 @@
         return Math.floor((b - a + 1) * Math.random()) + a
       },
       test() {
-        console.log(this.events)
+        console.log(this.getEvents)
       }
     },
   }
