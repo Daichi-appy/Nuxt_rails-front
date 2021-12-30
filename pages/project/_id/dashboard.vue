@@ -47,17 +47,27 @@
             >
               <v-card-title>
                 {{ task.title }}
+                <v-btn icon class="ml-auto">
+                  <v-icon>
+                    mdi-dots-vertical
+                  </v-icon>
+                </v-btn>
               </v-card-title>
 
               <v-card-text>
                 {{ $my.format(task.updated_at) }}
+                <v-btn icon color="primary">
+                  <v-icon>
+                    mdi-calendar
+                  </v-icon>
+                </v-btn>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="primary" icon @click="test">
+                <!-- <v-btn color="primary" icon @click="test">
                   <v-icon>
                     mdi-update
                   </v-icon>
-                </v-btn>
+                </v-btn> -->
                 <delete-task-modal :task_id="task.id" @delete-toaster="deleteToaster()" />
               </v-card-actions>
             </v-card>
