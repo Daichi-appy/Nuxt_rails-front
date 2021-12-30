@@ -56,9 +56,10 @@ export default {
     return {
       navMenus: [
         { name: 'project-id-dashboard', icon: 'mdi-view-dashboard' },
-        { name: 'project-id-layouts', icon: 'mdi-view-compact' },
-        { name: 'project-id-pages', icon: 'mdi-image' },
-        { name: 'project-id-components', icon: 'mdi-view-comfy' },
+        // { name: 'project-id-layouts', icon: 'mdi-calendar' },
+        { name: 'project-id-calendar', icon: 'mdi-calendar' },
+        // { name: 'project-id-pages', icon: 'mdi-image' },
+        // { name: 'project-id-components', icon: 'mdi-view-comfy' },
         { name: 'project-id-settings', icon: 'mdi-cog' },
         { name: 'project-id-help', icon: 'mdi-help-circle' }
       ]

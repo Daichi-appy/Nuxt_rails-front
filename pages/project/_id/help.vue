@@ -1,7 +1,7 @@
 <template>
   <logged-in-container>
     <template #my-content>
-      {{ $store.state.current.project }}
+      実装予定
     </template>
   </logged-in-container>
 </template>

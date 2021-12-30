@@ -21,6 +21,7 @@
     "project": {
       "id": {
         "dashboard": "ダッシュボード",
+        "calendar": "カレンダー",
         "layouts": "レイアウト",
         "pages": "ページ",
         "components": "コンポーネント",

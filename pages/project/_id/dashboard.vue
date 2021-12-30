@@ -53,8 +53,10 @@
                 {{ $my.format(task.updated_at) }}
               </v-card-text>
               <v-card-actions>
-                <v-btn color="primary" outlined @click="test">
-                  編集
+                <v-btn color="primary" icon @click="test">
+                  <v-icon>
+                    mdi-update
+                  </v-icon>
                 </v-btn>
                 <delete-task-modal :task_id="task.id" @delete-toaster="deleteToaster()" />
               </v-card-actions>
