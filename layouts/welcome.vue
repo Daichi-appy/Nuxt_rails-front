@@ -21,13 +21,13 @@
           class="text-center"
         >
           <h1 class="display-1 mb-4">
-            未来をよりよく
+            日々の気づきや振り返りを可視化
           </h1>
           <h4
             class="subheading"
             :style="{ letterSpacing: '5px' }"
           >
-            やりたいこと、達成したいこと、漠然とした目標、ちょっとしたことをメモして管理できます。
+            やりたいこと、考えたいこと、ちょっとしたことをメモして管理できます。
           </h4>
         </v-col>
       </v-row>

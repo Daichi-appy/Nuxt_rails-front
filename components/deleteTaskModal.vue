@@ -2,10 +2,11 @@
   <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn 
-          icon
+          small
           v-on="on"
           v-bind="attrs"
           class="ml-auto"
+          icon
         >
           <v-icon color="red">
             mdi-delete
@@ -56,7 +57,7 @@ export default {
     async deleteProject () {
       console.log(this.task_id)
       // ローディング開始
-      this.loading = true
+      // this.loading = true
       // 現在のプロジェクトののidを格納
       const task_id = this.task_id
       // 送信先URL
@@ -69,13 +70,14 @@ export default {
             console.log(err)
           })
       // 少し待つ
-      await this.resolveAfter(2)
+      // await this.resolveAfter(2)
       // Apiからvuexにデータ更新
       this.replaceTasks()
       // ローディング終了,Modal閉じる
-      this.loading = false
+      // this.loading = false
       this.dialog = false
-      this.$emit('delete-toaster')
+      // this.$emit('delete-toaster')
+      this.deleteToaster()
     },
     resolveAfter (sec) {
       return new Promise(resolve => setTimeout(resolve, sec*1000))
@@ -89,6 +91,10 @@ export default {
       })
       .then(response => this.$store.dispatch('getTasks', response))
       .then(console.log("success replace"))
+    },
+    deleteToaster () {
+      this.$store.dispatch('getToast', {msg: 'タスクを削除しました', color: 'error' })
+      console.log('Toaster')
     }
   }
 }

@@ -13,16 +13,21 @@
               テーマ : {{ $store.state.current.project.name }}
             </h1> -->
             <v-card>
-              <v-card-text>
-                <div>テーマ</div>
-                <div>
-                  <p class="text-h4 text--primary">
-                    {{ $store.state.current.project.name }}
-                    <!-- <v-btn absolute right></v-btn> -->
-                    <delete-modal />
-                  </p>
-                </div>
-              </v-card-text>
+              <v-card-subtitle>
+                テーマ
+              </v-card-subtitle>
+              <v-card-title>
+                <p class="text-h4">
+                 {{ $store.state.current.project.name }}
+                </p>
+                  <!-- <v-btn absolute right></v-btn> -->
+                <delete-modal />
+              </v-card-title>
+              <v-btn icon class="ml-auto">
+                <v-icon>
+                  mdi-dots-vertical
+                </v-icon>
+              </v-btn>
             </v-card>
           </v-col>
 
@@ -47,11 +52,39 @@
             >
               <v-card-title>
                 {{ task.title }}
-                <v-btn icon class="ml-auto">
-                  <v-icon>
-                    mdi-dots-vertical
-                  </v-icon>
-                </v-btn>
+                <!-- 削除編集ボタンモーダル -->
+                <div class="ml-auto">
+                  <v-menu
+                    transition="scale-transition"
+                    rounded="lg"
+                  >
+                    <template v-slot:activator="{ on, attrs}">
+                      <v-btn
+                        v-on="on"
+                        v-bind="attrs"
+                        icon
+                      >
+                        <v-icon>
+                          mdi-dots-vertical
+                        </v-icon>
+                      </v-btn>
+                    </template>
+
+                    <v-list>
+                      <v-list-item>
+                        <updateTaskModal  :task_title="task.title" />
+                      </v-list-item>
+
+                      <v-divider></v-divider>
+
+                      <v-list-item>
+                        <delete-task-modal :task_id="task.id" @delete-toaster="deleteToaster()" />
+                      </v-list-item>
+                    </v-list>
+
+                  </v-menu>
+                </div>
+
               </v-card-title>
 
               <v-card-text>
@@ -68,11 +101,12 @@
                     mdi-update
                   </v-icon>
                 </v-btn> -->
-                <delete-task-modal :task_id="task.id" @delete-toaster="deleteToaster()" />
+                <!-- <delete-task-modal :task_id="task.id" @delete-toaster="deleteToaster()" /> -->
               </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
+
 
         <!-- ボタン右下 -->
           <add-task @add-toaster="addToaster()" />
@@ -86,13 +120,20 @@
 <script>
 import deleteTaskModal from '../../../components/deleteTaskModal.vue'
 import toaster from '../../../components/ui/toaster'
+import updateTaskModal from '../../../components/projects/updateModal.vue'
 export default {
-  components: { deleteTaskModal, toaster },
+  components: { deleteTaskModal, toaster, updateTaskModal },
   middleware: ['getTasks'],
   data () {
     return {
+      direction: 'bottom',
+      fab: false,
+      fling: false,
+      hover: false,
+      tabs: null,
+      transition: 'slide-y-transition',
       loading: false,
-      dialog: false
+      dialog: false,
     }
   },
   computed: {
@@ -111,6 +152,7 @@ export default {
     },
     deleteToaster () {
       this.$store.dispatch('getToast', {msg: 'タスクを削除しました', color: 'error' })
+      console.log('Toaster')
     },
     test () {
       console.log('update')
