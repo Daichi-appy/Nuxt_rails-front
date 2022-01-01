@@ -113,7 +113,7 @@ export default {
           console.log(err)
         })
       // Apiに追加したデータをApiからget
-      await this.resolveAfter(2)
+      // await this.resolveAfter(2)
       await this.getTasks(id)
       // Modalリセット
       this.dialog = false
