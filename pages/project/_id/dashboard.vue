@@ -72,7 +72,7 @@
 
                     <v-list>
                       <v-list-item>
-                        <updateTaskModal  :task_title="task.title" />
+                        <updateTaskModal  :task_title="task.title" :task_id="task.id" />
                       </v-list-item>
 
                       <v-divider></v-divider>
@@ -88,12 +88,9 @@
               </v-card-title>
 
               <v-card-text>
-                {{ $my.format(task.updated_at) }}
-                <v-btn icon color="primary">
-                  <v-icon>
-                    mdi-calendar
-                  </v-icon>
-                </v-btn>
+                <!-- {{ $my.format(task.updated_at) }} -->
+                {{ task.period }}
+                <datepicker :task_id="task.id" />
               </v-card-text>
               <v-card-actions>
                 <!-- <v-btn color="primary" icon @click="test">
@@ -121,8 +118,10 @@
 import deleteTaskModal from '../../../components/deleteTaskModal.vue'
 import toaster from '../../../components/ui/toaster'
 import updateTaskModal from '../../../components/projects/updateModal.vue'
+import datepicker from '../../../components/projects/datepicker.vue'
+
 export default {
-  components: { deleteTaskModal, toaster, updateTaskModal },
+  components: { deleteTaskModal, toaster, updateTaskModal, datepicker },
   middleware: ['getTasks'],
   data () {
     return {

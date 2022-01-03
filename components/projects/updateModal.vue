@@ -18,9 +18,10 @@
           v-model="title"
         >
         </v-text-field>
+        {{ task_id }}
       </v-card-text>
       <v-card-actions>
-        <v-btn outlined color="primary">
+        <v-btn outlined color="primary" @click="updateTask()">
           登録
         </v-btn>
         <v-btn outlined color="red" @click="dialog = !dialog">
@@ -37,6 +38,9 @@ export default {
   props: {
     task_title: {
       type: String
+    },
+    task_id: {
+      type: Number
     }
   },
   data () {
@@ -47,6 +51,31 @@ export default {
   },
   mounted () {
     this.title = this.task_title
+  },
+  methods: {
+    async updateTask() {
+      // console.log('update', this.title, this.task_id)
+      const id = this.$store.state.current.project.id
+      const task = { project_id: id, title: this.title }
+      await this.$axios
+        .$patch(`/api/v1/tasks/${this.task_id}`, task)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      await this.getTasks(id)
+      this.dialog = !this.dialog
+      this.updateToaster()
+    },
+    getTasks (id) {
+        this.$axios.$get('/api/v1/tasks', { params:{ project_id: id } } )
+        .then(response => this.$store.dispatch('getTasks', response))
+    },
+    updateToaster () {
+      this.$store.dispatch('getToast', { msg: 'タスクを編集しました', color: 'success' })
+    }
   }
 }
 </script>

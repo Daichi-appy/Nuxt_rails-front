@@ -94,14 +94,14 @@ export default {
       dialog: false,
       loading: false,
       name: '',
-      picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      picker: new Date().toISOString().substr(0, 10),
     }
   },
   methods: {
     async addTask () {
       //
       const id = this.$store.state.current.project.id
-      const task = { title: this.name, project_id: id } 
+      const task = { title: this.name, project_id: id, period: this.picker }
       this.loading = true
       // console.log(task)
       await this.$axios

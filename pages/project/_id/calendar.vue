@@ -248,7 +248,8 @@
         for (let i = 0; i < tasks.length; i++) {
           renameTasks.push({
             name: tasks[i].title,
-            start: tasks[i].updated_at.substr(0, 10),
+            // start: tasks[i].updated_at.substr(0, 10),
+            start: tasks[i].period || (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             color: this.colors[this.rnd(0, this.colors.length - 1)]
           })
         }
