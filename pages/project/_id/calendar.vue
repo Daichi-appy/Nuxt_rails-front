@@ -40,9 +40,6 @@
             {{ $refs.calendar.title }}
           </v-toolbar-title>
 
-          <v-btn @click="test">
-            test
-          </v-btn>
 
           <v-spacer></v-spacer>
           <!-- <v-menu
@@ -255,9 +252,6 @@
         }
         // return renameTasks
         this.events = renameTasks
-      },
-      test() {
-        console.log()
       }
     },
   }

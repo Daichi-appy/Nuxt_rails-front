@@ -18,7 +18,6 @@
           v-model="title"
         >
         </v-text-field>
-        {{ task_id }}
       </v-card-text>
       <v-card-actions>
         <v-btn outlined color="primary" @click="updateTask()">

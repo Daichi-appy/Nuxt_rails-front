@@ -99,6 +99,13 @@
                   </v-icon>
                 </v-btn> -->
                 <!-- <delete-task-modal :task_id="task.id" @delete-toaster="deleteToaster()" /> -->
+                <v-btn v-if="icon" class="ml-auto" @click="icon = !icon" icon >
+                  <v-icon>mdi-star-outline</v-icon>
+                </v-btn>
+
+                <v-btn v-else class="ml-auto" @click="icon = !icon" icon >
+                  <v-icon color="yellow darken-1">mdi-star</v-icon>
+                </v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -133,6 +140,7 @@ export default {
       transition: 'slide-y-transition',
       loading: false,
       dialog: false,
+      icon: false
     }
   },
   computed: {
