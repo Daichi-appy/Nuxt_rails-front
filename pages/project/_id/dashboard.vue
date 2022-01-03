@@ -21,13 +21,43 @@
                  {{ $store.state.current.project.name }}
                 </p>
                   <!-- <v-btn absolute right></v-btn> -->
-                <delete-modal />
+                <!-- <delete-modal /> -->
+                <!-- 削除編集menu -->
+                <div class="ml-auto">
+                  <v-menu
+                    transition="scale-transition"
+                    rounded="lg"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        v-on="on"
+                        v-bind="attrs"
+                        icon
+                      >
+                        <v-icon>
+                          mdi-dots-vertical
+                        </v-icon>
+                      </v-btn>
+                    </template>
+
+                    <v-list>
+                      <v-list-item>
+                        <v-btn small icon >
+                          <v-icon color="green" @click="toSettings()">mdi-pencil</v-icon>
+                        </v-btn>
+                      </v-list-item>
+
+                      <v-divider></v-divider>
+
+                      <v-list-item>
+                        <delete-modal />
+                      </v-list-item>
+                    </v-list>
+
+                  </v-menu>
+                </div>
+
               </v-card-title>
-              <v-btn icon class="ml-auto">
-                <v-icon>
-                  mdi-dots-vertical
-                </v-icon>
-              </v-btn>
             </v-card>
           </v-col>
 
@@ -163,6 +193,10 @@ export default {
     },
     test () {
       console.log('update')
+    },
+    toSettings() {
+      const id = this.$store.state.current.project.id
+      this.$router.push(`/project/${id}/settings`)
     }
   }
 }
