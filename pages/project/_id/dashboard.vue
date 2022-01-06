@@ -117,11 +117,13 @@
 
               </v-card-title>
 
+              <!-- カレンダー -->
               <v-card-text>
-                <!-- {{ $my.format(task.updated_at) }} -->
-                {{ task.period }}
+                目標 : {{ task.period }}
                 <datepicker :task_id="task.id" />
               </v-card-text>
+
+              <!-- お気に入りスター -->
               <v-card-actions>
                 <!-- <v-btn color="primary" icon @click="test">
                   <v-icon>
@@ -170,7 +172,7 @@ export default {
       transition: 'slide-y-transition',
       loading: false,
       dialog: false,
-      icon: false
+      icon: true,
     }
   },
   computed: {
