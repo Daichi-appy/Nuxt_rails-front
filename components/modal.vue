@@ -48,13 +48,49 @@
               </v-col>
             </v-row>
             <v-row>
-              <v-col align="center">
-                <v-chip color="success" outlined>
+              <v-col>
+
+                <v-menu
+
+                  transition="scale-transition"
+                  :return-value.sync="date"
+                  max-width="290px"
+                  min-width="auto"
+                  v-model="menu"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn 
+                      icon 
+                      color="primary"
+                      v-on="on"
+                      v-bind="attrs"
+                    >
+                      <v-icon>
+                        mdi-calendar
+                      </v-icon>
+                  </v-btn>
+                  </template>
+
+                  <v-card>
+                    <v-date-picker
+                      transition="scale-transition"
+                      :return-value.sync="date"
+                      v-model="picker"
+                    >
+                    </v-date-picker>
+                    <v-card-actions>
+                      <v-btn outlined color="primary">update</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-menu>
+
+
+                <v-chip  outlined>
                   目標 {{ picker }}
                 </v-chip>
               </v-col>
             </v-row>
-            <v-row>
+            <!-- <v-row>
               <v-col align="center">
                 <v-date-picker 
                   v-model="picker" 
@@ -62,14 +98,14 @@
                   color="light-blue lighten-2"
                   ></v-date-picker>
               </v-col>
-            </v-row>
+            </v-row> -->
           </v-container>
         </v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="blue darken-1"
+            color="red"
             outlined
             @click="dialog = false"
           >
@@ -101,6 +137,8 @@ export default {
       name: "",
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       loading: false,
+      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      menu: false,
       // project: {
       //   user_id: this.user_id,
       //   name: this.name,

@@ -22,7 +22,6 @@
 
     <v-card>
       <v-date-picker
-        :close-on-content-click="false"
         transition="scale-transition"
         :return-value.sync="date"
         v-model="picker"
