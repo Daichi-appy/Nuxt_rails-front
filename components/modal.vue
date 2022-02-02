@@ -85,7 +85,7 @@
                 </v-menu>
 
 
-                <v-chip color="success" outlined>
+                <v-chip  outlined>
                   目標 {{ picker }}
                 </v-chip>
               </v-col>
