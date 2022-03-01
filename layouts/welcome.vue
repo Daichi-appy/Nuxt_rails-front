@@ -33,6 +33,44 @@
       </v-row>
     </v-img>
 
+    <v-divider class="mt-5" inset></v-divider>
+
+    <v-row
+      class="mt-5"
+    >
+      <v-col
+        cols="6"
+      >
+        <v-card
+          elevation="10"
+        >
+          <v-img
+            v-bind:src="image_src1"
+          >
+          </v-img>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row
+      justify="end"
+      class="mt-5"
+    >
+      <v-col
+        cols="6"
+      >
+        <v-card
+          elevation="10"
+        >
+          <v-img
+            v-bind:src="image_src2"
+          >  
+          </v-img>
+        </v-card>
+      </v-col>
+    </v-row>
+
+
     <v-sheet>
       <v-container
         fluid
@@ -94,7 +132,11 @@ export default {
         // { title: 'price', subtitle: '会社の成長に合わせた3つのプラン' },
         { title: 'contact', subtitle: 'お気軽にご連絡を' },
         // { title: 'company', subtitle: '私たちの会社' }
-      ]
+      ],
+      image_src1: require("@/assets/images/AppImage/IdeaStocker1.png"),
+      image_src2: require("@/assets/images/AppImage/IdeaStocker2.png"),
+      image_src3: require("@/assets/images/AppImage/IdeaStocker3.png"),
+      image_src4: require("@/assets/images/AppImage/IdeaStocker4.png"),
     }
   }
 }
