@@ -38,7 +38,7 @@
                 >
                   <v-btn 
                     class="mr-2 mb-3"
-                    color="blue"
+                    color="blue lighten-1"
                     width="150px"
                     to="/signup"
                   >
@@ -47,7 +47,7 @@
                   </v-btn>
                   <v-btn 
                     class="mr-2 mb-3"
-                    color="green darken-1"
+                    color="green lighten-1"
                     width="150px"
                     to="/login"
                   >
