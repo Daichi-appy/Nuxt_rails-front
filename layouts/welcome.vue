@@ -77,7 +77,7 @@
                 About App
               </v-card-title>
             </v-card>
-            <v-card-title class="pb-5 text-subtitle-2 justify-center">
+            <v-card-title class="pb-3 text-subtitle-1 justify-center">
             アイディアや目標など、テーマを決めてカードにしたり、思いついたことをリストにしたり整理することができます。
             </v-card-title>
           </v-col>
