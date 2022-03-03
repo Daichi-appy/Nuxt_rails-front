@@ -17,7 +17,7 @@
         :style="{ height: `${imgHeight}px` }"
       >
         <v-col
-          cols="12"
+          cols="auto"
           class="text-center"
         >
           <h1 class="display-1 mb-4">
@@ -33,43 +33,72 @@
       </v-row>
     </v-img>
 
-    <v-divider class="mt-5" inset></v-divider>
+    <!-- <v-divider class="mt-5"></v-divider> -->
 
-    <v-row
-      class="mt-5"
-    >
-      <v-col
-        cols="6"
+    <v-sheet>
+      <v-container
       >
-        <v-card
-          elevation="10"
+        <v-row
+        class="mt-5"
+        justify="center"
         >
-          <v-img
-            v-bind:src="image_src1"
+          <v-col
+            cols="12"
+            sm="6"
           >
-          </v-img>
-        </v-card>
-      </v-col>
-    </v-row>
-
-    <v-row
-      justify="end"
-      class="mt-5"
-    >
-      <v-col
-        cols="6"
-      >
-        <v-card
-          elevation="10"
+            <v-card
+            elevation="5"
+            >
+              <v-img
+                v-bind:src="image_src3"
+              >
+              </v-img>
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row
+          justify="center"
         >
-          <v-img
-            v-bind:src="image_src2"
-          >  
-          </v-img>
-        </v-card>
-      </v-col>
-    </v-row>
+          <v-col
+            cols="12"
+            sm="6"
+          >
+            テーマを決めて
+          </v-col>
+        </v-row>
 
+        <v-row
+          justify="center"
+          class="mt-5"
+        >
+          <v-col
+            cols="12"
+            sm="6"
+          >
+            <v-card
+              elevation="10"
+            >
+              <v-img
+                v-bind:src="image_src1"
+              >  
+              </v-img>
+            </v-card>
+          </v-col>
+        </v-row>
+
+        <v-row
+          justify="center"
+        >
+          <v-col
+            cols="12"
+            sm="6"
+          >
+            タスクに期限を設定して、カレンダーから確認できます！
+          </v-col>
+        </v-row>
+
+      </v-container>
+    </v-sheet>
 
     <v-sheet>
       <v-container
