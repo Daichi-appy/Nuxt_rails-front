@@ -11,26 +11,72 @@
       gradient="to top right, rgba(19,84,122,.6), rgba(128,208,199,.9)"
       :height="imgHeight"
     >
-      <v-row
-        align="center"
-        justify="center"
-        :style="{ height: `${imgHeight}px` }"
-      >
-        <v-col
-          cols="auto"
-          class="text-center"
+    <v-container>
+
+        <v-row
+          align="end"
+          justify="center"
+          :style="{ height: `${imgHeight}px` }"
         >
-          <h1 class="display-1 mb-4">
-            日々の気づきや振り返りを可視化
-          </h1>
-          <h4
-            class="subheading"
-            :style="{ letterSpacing: '5px' }"
+          <v-col
+            cols="12"
+            class="text-center"
           >
-            やりたいこと、考えたいこと、ちょっとしたことをメモして管理できます。
-          </h4>
+            <h1 class="display-1">
+              日々の気づきや振り返りを可視化
+            </h1>
+            <h4
+              class="subheading mb-4"
+              :style="{ letterSpacing: '5px' }"
+            >
+              やりたいこと、考えたいこと、ちょっとしたことをメモして管理できます。
+            </h4>
+          </v-col>
+          <!-- ボタン -->
+          <v-col cols="12" align-self="start" class="text-center">
+            <div 
+              >
+                <v-btn 
+                  class="mr-2 mb-3"
+                  color="blue"
+                  width="150px"
+                  to="/signup"
+                >
+                  <v-icon>mdi-account</v-icon>
+                  会員登録
+                </v-btn>
+                <v-btn 
+                  class="mr-2 mb-3"
+                  color="green darken-1"
+                  width="150px"
+                  to="/login"
+                >
+                  <v-icon>mdi-account-check</v-icon>
+                  ログイン
+                </v-btn>
+                <v-btn
+                  class="mr-2 mb-3"
+                  width="150px"
+                  @click="githubLink()"
+                >
+                  <v-icon>mdi-github</v-icon>
+                  GITHUB
+                </v-btn>
+              </div>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+              
+          </v-col>
+        </v-row>
+    </v-container>
+      <!-- <v-row>
+        <v-col cols="12" class="">
+          <v-btn>AAA</v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
     </v-img>
 
     <!-- <v-divider class="mt-5"></v-divider> -->
@@ -166,6 +212,12 @@ export default {
       image_src2: require("@/assets/images/AppImage/IdeaStocker2.png"),
       image_src3: require("@/assets/images/AppImage/IdeaStocker3.png"),
       image_src4: require("@/assets/images/AppImage/IdeaStocker4.png"),
+    }
+  },
+  methods: {
+    githubLink() {
+      const url = 'https://github.com/Daichi-appy/Nuxt_rails-root'
+      window.open(url, '_blank')
     }
   }
 }
