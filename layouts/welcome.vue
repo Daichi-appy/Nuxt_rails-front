@@ -152,29 +152,32 @@
         >
           <v-col
             cols="10"
+            class=""
           >
-            <v-card flat>
+
               <v-list flat>
                 <v-list-item
                   v-for="(point, i) in points"
                   :key="`point-${i}`"
                 >
-                  <v-list-item-icon>
-                    <v-icon
-                      size="30"
-                      :color="point.color"
-                      v-text="point.icon"
-                    />
+                  <v-list-item-icon
+                  >
+                      <v-icon
+                        size="30"
+                        :color="point.color"
+                        v-text="point.icon"
+                      />
                   </v-list-item-icon>
                   <v-list-item-content>
                     <div
                       class="text-subtitle-1"
-                      v-text="point.text"
-                    />
+                    >
+                      {{ point.text }}
+                    </div>
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
-            </v-card>
+
           </v-col>
 
           <v-col
