@@ -11,75 +11,79 @@
       gradient="to top right, rgba(19,84,122,.6), rgba(128,208,199,.9)"
       :height="imgHeight"
     >
-    <v-container>
+      <v-container>
 
-        <v-row
-          align="end"
-          justify="center"
-          :style="{ height: `${imgHeight}px` }"
-        >
-          <v-col
-            cols="12"
-            class="text-center"
+          <v-row
+            align="end"
+            justify="center"
+            :style="{ height: `${imgHeight}px` }"
           >
-            <h1 class="display-1">
-              日々の気づきや振り返りを可視化
-            </h1>
-            <h4
-              class="subheading mb-4"
-              :style="{ letterSpacing: '5px' }"
+            <v-col
+              cols="12"
+              class="text-center"
             >
-              やりたいこと、考えたいこと、ちょっとしたことをメモして管理できます。
-            </h4>
-          </v-col>
-          <!-- ボタン -->
-          <v-col cols="12" align-self="start" class="text-center">
-            <div 
+              <h1 class="display-1">
+                日々の気づきや振り返りを可視化
+              </h1>
+              <h4
+                class="subheading mb-4"
+                :style="{ letterSpacing: '5px' }"
               >
-                <v-btn 
-                  class="mr-2 mb-3"
-                  color="blue"
-                  width="150px"
-                  to="/signup"
+                やりたいこと、考えたいこと、ちょっとしたことをメモして管理できます。
+              </h4>
+            </v-col>
+            <!-- 登録、ログイン、githubボタン -->
+            <v-col cols="12" align-self="start" class="text-center">
+              <div 
                 >
-                  <v-icon>mdi-account</v-icon>
-                  会員登録
-                </v-btn>
-                <v-btn 
-                  class="mr-2 mb-3"
-                  color="green darken-1"
-                  width="150px"
-                  to="/login"
-                >
-                  <v-icon>mdi-account-check</v-icon>
-                  ログイン
-                </v-btn>
-                <v-btn
-                  class="mr-2 mb-3"
-                  width="150px"
-                  @click="githubLink()"
-                >
-                  <v-icon>mdi-github</v-icon>
-                  GITHUB
-                </v-btn>
-              </div>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col>
-              
-          </v-col>
-        </v-row>
-    </v-container>
-      <!-- <v-row>
-        <v-col cols="12" class="">
-          <v-btn>AAA</v-btn>
-        </v-col>
-      </v-row> -->
+                  <v-btn 
+                    class="mr-2 mb-3"
+                    color="blue"
+                    width="150px"
+                    to="/signup"
+                  >
+                    <v-icon>mdi-account</v-icon>
+                    会員登録
+                  </v-btn>
+                  <v-btn 
+                    class="mr-2 mb-3"
+                    color="green darken-1"
+                    width="150px"
+                    to="/login"
+                  >
+                    <v-icon>mdi-account-check</v-icon>
+                    ログイン
+                  </v-btn>
+                  <v-btn
+                    class="mr-2 mb-3"
+                    width="150px"
+                    @click="githubLink()"
+                  >
+                    <v-icon>mdi-github</v-icon>
+                    GITHUB
+                  </v-btn>
+                </div>
+            </v-col>
+          </v-row>
+      </v-container>
     </v-img>
 
-    <!-- <v-divider class="mt-5"></v-divider> -->
+    <v-sheet>
+      <v-container>
+        <v-row>
+          <v-col>
+            <v-card flat>
+              <v-card-title class="justify-center display-1">
+                About App
+              </v-card-title>
+            </v-card>
+            <v-card-title class="pb-5 text-subtitle-2 justify-center">
+            アイディアや目標など、テーマを決めてカードにしたり、思いついたことをリストにしたり整理することができます。
+            </v-card-title>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-sheet>
 
     <v-sheet>
       <v-container
@@ -89,8 +93,7 @@
         justify="center"
         >
           <v-col
-            cols="12"
-            sm="6"
+            cols="10"
           >
             <v-card
             elevation="5"
@@ -101,15 +104,14 @@
               </v-img>
             </v-card>
           </v-col>
-        </v-row>
-        <v-row
-          justify="center"
-        >
           <v-col
-            cols="12"
-            sm="6"
+            cols="10"
+            class="my-5"
           >
-            テーマを決めて
+            <h3>
+              <v-icon color="blue">mdi-arrow-right-circle-outline</v-icon>
+              テーマを決めて、自由にタスクを作成できます！
+            </h3>
           </v-col>
         </v-row>
 
@@ -118,8 +120,7 @@
           class="mt-5"
         >
           <v-col
-            cols="12"
-            sm="6"
+            cols="10"
           >
             <v-card
               elevation="10"
@@ -130,19 +131,70 @@
               </v-img>
             </v-card>
           </v-col>
+          <v-col
+            cols="10"
+            class="my-5"
+          >
+            <h3>
+              <v-icon color="blue">mdi-arrow-right-circle-outline</v-icon>
+              タスクに期限を設定して、カレンダーから確認できます！
+            </h3>
+          </v-col>
         </v-row>
 
+      </v-container>
+    </v-sheet>
+
+    <v-sheet>
+      <v-container>
         <v-row
           justify="center"
         >
           <v-col
-            cols="12"
-            sm="6"
+            cols="10"
           >
-            タスクに期限を設定して、カレンダーから確認できます！
+            <v-card flat>
+              <v-list flat>
+                <v-list-item
+                  v-for="(point, i) in points"
+                  :key="`point-${i}`"
+                >
+                  <v-list-item-icon>
+                    <v-icon
+                      size="30"
+                      :color="point.color"
+                      v-text="point.icon"
+                    />
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <div
+                      class="text-subtitle-1"
+                      v-text="point.text"
+                    />
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-card>
+          </v-col>
+
+          <v-col
+            cols="8"
+          >
+            <v-sparkline
+              :value="sparkline.value"
+              :gradient="sparkline.gradient"
+              :smooth="sparkline.radius || false"
+              :padding="sparkline.padding"
+              :line-width="sparkline.width"
+              :stroke-linecap="sparkline.lineCap"
+              :gradient-direction="sparkline.gradientDirection"
+              :fill="sparkline.fill"
+              :type="sparkline.type"
+              :auto-line-width="sparkline.autoLineWidth"
+              auto-draw
+            />
           </v-col>
         </v-row>
-
       </v-container>
     </v-sheet>
 
@@ -199,6 +251,13 @@ export default {
     befLoginFooter
   },
   data () {
+    const gradients = [
+      ['#222'],
+      ['#42b3f4'],
+      ['red', 'orange', 'yellow'],
+      ['purple', 'violet'],
+      ['#00c6ff', '#F0F', '#FF0']
+    ]
     return {
       imgHeight: 500,
       menus: [
@@ -212,6 +271,36 @@ export default {
       image_src2: require("@/assets/images/AppImage/IdeaStocker2.png"),
       image_src3: require("@/assets/images/AppImage/IdeaStocker3.png"),
       image_src4: require("@/assets/images/AppImage/IdeaStocker4.png"),
+      points: [
+          {
+            icon: 'mdi-file-table-box-multiple-outline',
+            color: 'blue',
+            text: '直感的な操作で快適に目標・テーマを作成'
+          },
+          {
+            icon: 'mdi-chart-bar',
+            color: 'green accent-4',
+            text: 'テーマごとにタスクを設定'
+          },
+          {
+            icon: 'mdi-chart-arc',
+            color: 'deep-orange',
+            text: 'ビジュアライズに優れたカテゴリー分け'
+          }
+      ],
+      sparkline: {
+        width: 4,
+        radius: 10,
+        padding: 4,
+        lineCap: 'round',
+        gradient: gradients[4],
+        value: [0, 2, 5, 9, 5, 10, 8, 2, 9, 20],
+        gradientDirection: 'right',
+        gradients,
+        fill: false,
+        type: 'trend',
+        autoLineWidth: true
+      },
     }
   },
   methods: {

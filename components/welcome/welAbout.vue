@@ -1,14 +1,14 @@
 <template>
   <div>
-    <v-card-title class="pb-5 text-subtitle-2 justify-center">
+    <!-- <v-card-title class="pb-5 text-subtitle-2 justify-center">
       アイディアや目標など、テーマを決めてカードにしたり、思いついたことをリストにしたり整理することができます。
-    </v-card-title>
+    </v-card-title> -->
 
     <!-- <v-card-title class="text-subtitle-2 justify-center">
       「Rails6とNuxt.jsで作るユーザーJWT認証付きシングルページアプリケーション」
     </v-card-title> -->
 
-    <v-btn
+    <!-- <v-btn
       class="d-flex mx-auto"
       width="150px"
       color="myblue"
@@ -16,39 +16,41 @@
       to="/login"
     >
       利用を始める
-    </v-btn>
+    </v-btn> -->
 
 
-    <v-row>
-
+    <!-- <v-row
+      justify="center"
+    >
       <v-col
-        cols="12"
-        sm="6"
+        cols="8"
       >
-        <v-list flat>
-          <v-list-item
-            v-for="(point, i) in points"
-            :key="`point-${i}`"
-          >
-            <v-list-item-icon>
-              <v-icon
-                size="30"
-                :color="point.color"
-                v-text="point.icon"
-              />
-            </v-list-item-icon>
-            <v-list-item-content>
-              <div
-                class="text-subtitle-1"
-                v-text="point.text"
-              />
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+        <v-card flat>
+          <v-list flat>
+            <v-list-item
+              v-for="(point, i) in points"
+              :key="`point-${i}`"
+            >
+              <v-list-item-icon>
+                <v-icon
+                  size="30"
+                  :color="point.color"
+                  v-text="point.icon"
+                />
+              </v-list-item-icon>
+              <v-list-item-content>
+                <div
+                  class="text-subtitle-1"
+                  v-text="point.text"
+                />
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-card>
       </v-col>
+
       <v-col
-        cols="12"
-        sm="6"
+        cols="8"
       >
         <v-sparkline
           :value="sparkline.value"
@@ -64,7 +66,7 @@
           auto-draw
         />
       </v-col>
-    </v-row>
+    </v-row> -->
 
     <v-card-title class="text-subtitle-2 justify-center">
       採用している技術
@@ -121,36 +123,36 @@ export default {
         { name: 'Heroku', v: '', use: 'ホスティング', color: '#6762A6' },
         { name: 'Vuetify', v: 'v2.3+', use: 'CSSフレームワーク', color: '#1867C0' }
       ],
-      points: [
-        {
-          icon: 'mdi-file-table-box-multiple-outline',
-          color: 'blue',
-          text: '直感的な操作で快適に目標・テーマを作成'
-        },
-        {
-          icon: 'mdi-chart-bar',
-          color: 'green accent-4',
-          text: 'テーマごとにタスクを設定'
-        },
-        {
-          icon: 'mdi-chart-arc',
-          color: 'deep-orange',
-          text: 'ビジュアライズに優れたカテゴリー分け'
-        }
-      ],
-      sparkline: {
-        width: 4,
-        radius: 10,
-        padding: 4,
-        lineCap: 'round',
-        gradient: gradients[4],
-        value: [0, 2, 5, 9, 5, 10, 8, 2, 9, 20],
-        gradientDirection: 'right',
-        gradients,
-        fill: false,
-        type: 'trend',
-        autoLineWidth: true
-      }
+      // points: [
+      //   {
+      //     icon: 'mdi-file-table-box-multiple-outline',
+      //     color: 'blue',
+      //     text: '直感的な操作で快適に目標・テーマを作成'
+      //   },
+      //   {
+      //     icon: 'mdi-chart-bar',
+      //     color: 'green accent-4',
+      //     text: 'テーマごとにタスクを設定'
+      //   },
+      //   {
+      //     icon: 'mdi-chart-arc',
+      //     color: 'deep-orange',
+      //     text: 'ビジュアライズに優れたカテゴリー分け'
+      //   }
+      // ],
+      // sparkline: {
+      //   width: 4,
+      //   radius: 10,
+      //   padding: 4,
+      //   lineCap: 'round',
+      //   gradient: gradients[4],
+      //   value: [0, 2, 5, 9, 5, 10, 8, 2, 9, 20],
+      //   gradientDirection: 'right',
+      //   gradients,
+      //   fill: false,
+      //   type: 'trend',
+      //   autoLineWidth: true
+      // }
     }
   }
 }
