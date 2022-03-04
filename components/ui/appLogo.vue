@@ -1,17 +1,19 @@
 <template>
   <v-avatar
-    color="black"
     size="34"
     class="my-app-log"
   >
-    <span class="white--text text-subtitle-2">
-      IS
-    </span>
+    <v-img v-bind:src="AppLogo"></v-img>
   </v-avatar>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      AppLogo: require("@/assets/images/AppLogo/logo.png")
+    }
+  }
 }
 </script>
 
