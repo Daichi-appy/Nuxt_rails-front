@@ -1,4 +1,4 @@
 # IdeaStocker フロント
 
 # URL
-https://appy-nuxt-rails-front.herokuapp.com/
+https://www.ideastocker.com/
