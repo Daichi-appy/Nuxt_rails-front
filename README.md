@@ -1,4 +1,4 @@
 # IdeaStocker フロント
 
 # URL
-https://www.ideastocker.com/
+https://www.ideastocker.com
